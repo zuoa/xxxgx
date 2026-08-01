@@ -1,6 +1,7 @@
 ---
-import { site } from '../config';
+import { site, cities } from '../config';
 import Icon from '../components/Icon.astro';
+import CitySwitcher from '../components/CitySwitcher.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -26,7 +27,7 @@ const nav = [
 ];
 
 const favicon =
-  "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232850d8'/><text x='32' y='43' font-size='32' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle'>学</text></svg>";
+  "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232850d8'/><text x='32' y='43' font-size='32' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle'>职</text></svg>";
 ---
 
 <!doctype html>
@@ -56,13 +57,14 @@ const favicon =
       <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
         <a href="/" class="flex shrink-0 items-center gap-2.5">
           <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-base font-bold text-white shadow-md shadow-blue-200">
-            学
+            职
           </span>
           <span class="leading-tight">
             <span class="block text-base font-bold tracking-tight text-gray-900">{site.name}</span>
-            <span class="hidden text-[11px] text-gray-500 sm:block">90 / 60 / 18 学分要求一站查</span>
+            <span class="hidden text-[11px] text-gray-500 sm:block">杭州站 · 90 / 60 / 18 学分要求一站查</span>
           </span>
         </a>
+        <CitySwitcher />
         <nav class="hidden items-center gap-1 md:flex">
           {nav.map((item) => (
             <a
@@ -106,15 +108,35 @@ const favicon =
 
     <footer class="bg-slate-900 text-slate-400">
       <div class="mx-auto max-w-6xl px-4 py-10">
-        <div class="grid gap-10 md:grid-cols-[1.2fr_1fr_1.2fr]">
+        <div class="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1.2fr]">
           <div>
             <div class="flex items-center gap-2.5">
               <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-indigo-500 text-sm font-bold text-white">
-                学
+                职
               </span>
               <p class="font-bold text-white">{site.name}</p>
             </div>
             <p class="mt-3 max-w-sm text-sm leading-6">{site.tagline}</p>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-white">城市站点</p>
+            <ul class="mt-3 grid grid-cols-2 gap-x-4 gap-y-2.5 text-sm">
+              {cities.map((city) => (
+                <li class="flex items-center gap-1.5">
+                  {city.open ? (
+                    <>
+                      <a href="/" class="text-blue-400 transition hover:text-blue-300">{city.name}站</a>
+                      <span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] text-emerald-400">已开通</span>
+                    </>
+                  ) : (
+                    <>
+                      <span class="text-slate-500">{city.name}站</span>
+                      <span class="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] text-slate-500">筹备中</span>
+                    </>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
           <div>
             <p class="text-sm font-semibold text-white">微信咨询</p>
@@ -150,7 +172,7 @@ const favicon =
             本站为继续教育学分政策信息整理与学习辅助服务网站，内容整理自杭州市人社局、浙江省人社厅等公开发布的政策文件，
             最新要求以各行业主管部门当年评审通知为准。内容更新：{site.updatedAt}
           </p>
-          <p class="mt-1">© 2026 {site.name}</p>
+          <p class="mt-1">© 2026 {site.name} · zcsb123.com</p>
         </div>
       </div>
     </footer>

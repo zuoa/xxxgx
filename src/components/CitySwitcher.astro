@@ -1,0 +1,48 @@
+---
+import { cities, currentCity } from '../config';
+---
+
+<!-- 头部城市切换器：当前仅杭州站开通，其余城市显示"即将开通" -->
+<details data-city-switcher class="group relative shrink-0">
+  <summary
+    class="flex cursor-pointer list-none items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-sm font-medium text-gray-700 transition hover:border-blue-300 hover:text-blue-700 [&::-webkit-details-marker]:hidden"
+  >
+    <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+    {currentCity.name}站
+    <svg class="h-3.5 w-3.5 text-gray-400 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.17l3.71-3.94a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd" />
+    </svg>
+  </summary>
+  <div class="absolute left-0 top-full z-50 mt-2 w-52 rounded-xl border border-gray-200 bg-white p-2 shadow-xl shadow-gray-200/60">
+    <p class="px-2 pb-1 pt-1 text-xs text-gray-400">选择城市站点</p>
+    <ul>
+      {cities.map((city) => (
+        <li>
+          {city.open ? (
+            <span class="flex items-center justify-between rounded-lg bg-blue-50 px-2 py-2 text-sm font-medium text-blue-700">
+              {city.name}站
+              <span class="text-xs font-normal text-blue-500">当前站点</span>
+            </span>
+          ) : (
+            <span class="flex items-center justify-between rounded-lg px-2 py-2 text-sm text-gray-400">
+              {city.name}站
+              <span class="rounded bg-gray-100 px-1.5 py-0.5 text-[11px]">即将开通</span>
+            </span>
+          )}
+        </li>
+      ))}
+    </ul>
+    <p class="border-t border-gray-100 px-2 pb-1 pt-2 text-[11px] leading-4 text-gray-400">
+      更多城市陆续开通中
+    </p>
+  </div>
+</details>
+
+<script>
+  // 点击切换器外部时收起下拉
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll('details[data-city-switcher][open]').forEach((d) => {
+      if (e.target instanceof Node && !d.contains(e.target)) d.removeAttribute('open');
+    });
+  });
+</script>

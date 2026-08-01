@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hz-jxjy.pages.dev/sitemap-index.xml
+Sitemap: https://zcsb123.com/sitemap-index.xml

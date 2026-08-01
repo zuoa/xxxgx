@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import Icon from '../components/Icon.astro';
-import { site } from '../config';
+import { site, cities } from '../config';
 
 const industries = (await getCollection('hangye')).sort((a, b) => a.data.order - b.data.order);
 
@@ -114,6 +114,44 @@ const websiteLd = {
           学分未达标将取消当年职称申报资格
         </p>
       </div>
+    </div>
+  </section>
+
+  <!-- 城市站点 -->
+  <section class="mt-10">
+    <div class="border-l-4 border-blue-600 pl-3">
+      <h2 class="text-xl font-bold text-gray-900 md:text-2xl">城市站点</h2>
+      <p class="mt-1 text-sm text-gray-500">
+        {site.name}正在陆续开通各城市站点，当前仅杭州站上线，其余城市敬请期待。
+      </p>
+    </div>
+    <div class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      {cities.map((city) =>
+        city.open ? (
+          <a
+            href="#hangye"
+            class="group relative flex items-center justify-between rounded-xl border-2 border-blue-600 bg-blue-50/60 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md hover:shadow-blue-100"
+          >
+            <span class="flex items-center gap-2.5">
+              <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-sm font-bold text-white">
+                {city.name.charAt(0)}
+              </span>
+              <span class="font-bold text-gray-900 group-hover:text-blue-700">{city.name}站</span>
+            </span>
+            <span class="rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-medium text-emerald-700">已开通</span>
+          </a>
+        ) : (
+          <div class="flex items-center justify-between rounded-xl border border-dashed border-gray-200 bg-white p-4">
+            <span class="flex items-center gap-2.5">
+              <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100 text-sm font-bold text-gray-400">
+                {city.name.charAt(0)}
+              </span>
+              <span class="font-medium text-gray-400">{city.name}站</span>
+            </span>
+            <span class="rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-400">即将开通</span>
+          </div>
+        ),
+      )}
     </div>
   </section>
 

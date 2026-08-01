@@ -5,8 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: 部署前改为你的正式域名，如 https://www.example.com
-  site: 'https://hz-jxjy.pages.dev',
+  site: 'https://zcsb123.com',
   trailingSlash: 'always',
   integrations: [sitemap()],
   vite: {
