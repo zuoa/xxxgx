@@ -1,0 +1,118 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { site } from '../config';
+
+const title = '浙江省12个指定网络继续教育平台名单（2026）_杭州新干线';
+const description = '浙江省建设行业专业技术人员网络继续教育平台完整名单（浙建人教函〔2024〕241号）：覆盖杭州、宁波、温州等11地市共12个指定平台，建设工程系列补修学时任选其一均有效。';
+
+const platforms = [
+  { name: '浙江省建设人才远程继续教育平台', url: 'https://www.zjjsrc.cn/', region: '省级' },
+  { name: '（杭州市）专业技术人员学习新干线', url: 'https://learning.hzrs.hangzhou.gov.cn', region: '杭州' },
+  { name: '宁波市建筑业从业人员教育考试网', url: 'https://ningbo.zhujianpeixun.com/', region: '宁波' },
+  { name: '温州市住房和城乡建设行业专业技术人员继续教育系统', url: 'https://wzjx.ylxue.net', region: '温州' },
+  { name: '（湖州市）城建职业技能培训学校网络教育培训平台', url: 'https://huzhou.zhujianpeixun.com/', region: '湖州' },
+  { name: '嘉兴市建设行业专业技术人员继续教育学时登记管理系统', url: 'https://study.jxjsjyw.net/', region: '嘉兴' },
+  { name: '绍兴市专业技术人员继续教育平台', url: 'http://220.191.224.159/elms/web/index1.jsp', region: '绍兴' },
+  { name: '金华市建设技工学校教育培训平台', url: 'https://jinhua.zhujianpeixun.com/', region: '金华' },
+  { name: '衢州市建设职业学校在线教育及学时登记管理系统', url: 'https://quzhou.zhujianpeixun.com/', region: '衢州' },
+  { name: '舟山专业技术人员继续教育云平台', url: 'https://zjjxjy.zhoushan.gov.cn/', region: '舟山' },
+  { name: '台州市专业技术人员继续教育网络学习平台', url: 'http://zjjxjy.tzvtc.edu.cn', region: '台州' },
+  { name: '丽水市建设行业人才继续教育平台', url: 'https://www.lssjsjypxxx.com/home', region: '丽水' },
+];
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '浙江省指定的网络继续教育平台有哪些？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '根据浙建人教函〔2024〕241号文件，全省共12个指定平台：浙江省建设人才远程继续教育平台、杭州市专业技术人员学习新干线，以及宁波、温州、湖州、嘉兴、绍兴、金华、衢州、舟山、台州、丽水10个地市的建设行业继续教育平台。',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '在其他地市的平台学习，杭州职称评审认可吗？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '认可。12个指定平台任一家参加专业科目和公需科目学习获取的学分均有效，但须在杭州市专业技术人员学习新干线系统完成学分登记，数据可同步到职称申报系统。',
+      },
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} jsonLd={faqLd}>
+  <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
+    <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
+    <span class="text-gray-800">12平台名单</span>
+  </nav>
+
+  <article class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm md:p-8">
+    <h1 class="text-2xl font-bold leading-snug text-gray-900 md:text-3xl">
+      浙江省 12 个指定网络继续教育平台名单
+    </h1>
+    <p class="mt-2 text-sm text-gray-500">
+      依据：浙建人教函〔2024〕241号附件 · 内容更新：{site.updatedAt}
+    </p>
+
+    <div class="prose-content mt-6">
+      <p>
+        浙江省建设行业专业技术人员可在下列<strong>12个指定网络继续教育平台</strong>任一家参加学习，
+        所获学分全省互认。杭州申报人完成学习后，学分须登记到
+        <a href="https://learning.hzrs.hangzhou.gov.cn" target="_blank" rel="noopener">杭州市专业技术人员学习新干线系统</a>，
+        数据可自行同步到职称申报系统。
+      </p>
+    </div>
+
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full border-collapse text-sm">
+        <thead>
+          <tr>
+            <th class="border border-gray-300 bg-gray-50 px-3 py-2 text-left font-semibold">#</th>
+            <th class="border border-gray-300 bg-gray-50 px-3 py-2 text-left font-semibold">平台名称</th>
+            <th class="border border-gray-300 bg-gray-50 px-3 py-2 text-left font-semibold">属地</th>
+            <th class="border border-gray-300 bg-gray-50 px-3 py-2 text-left font-semibold">网址</th>
+          </tr>
+        </thead>
+        <tbody>
+          {platforms.map((p, i) => (
+            <tr class={i === 1 ? 'bg-blue-50' : ''}>
+              <td class="border border-gray-300 px-3 py-2">{i + 1}</td>
+              <td class="border border-gray-300 px-3 py-2 font-medium">
+                {p.name}{i === 1 && <span class="ml-1 rounded bg-blue-600 px-1.5 py-0.5 text-xs text-white">杭州主平台</span>}
+              </td>
+              <td class="border border-gray-300 px-3 py-2">{p.region}</td>
+              <td class="border border-gray-300 px-3 py-2">
+                <a href={p.url} target="_blank" rel="noopener nofollow" class="break-all text-blue-600 hover:underline">
+                  {p.url.replace(/^https?:\/\//, '')} ↗
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose-content mt-8">
+      <h2>使用说明</h2>
+      <ul>
+        <li><strong>学分互认</strong>：12个平台任选其一学习均有效，不局限于杭州本地平台；</li>
+        <li><strong>登记要求</strong>：杭州申报人须在<strong>新干线系统</strong>完成学分登记，登记后数据同步到省职称申报平台；</li>
+        <li><strong>补修场景</strong>：建设工程系列明文允许用上述平台集中补修往年学时（详见<a href="/hangye/jianshe-gongcheng/">建设工程系列学分要求</a>）；其他行业以本系列通知为准；</li>
+        <li><strong>适用范围</strong>：该名单源自建设行业文件，其他行业系列如有专门平台要求（如自然资源、广电），请同时参考<a href="/#hangye">对应行业页</a>。</li>
+      </ul>
+      <h2>名单文件原文</h2>
+      <p>
+        <a href="http://photos.zjjsrc.net/2024tongzhi/0516.pdf" target="_blank" rel="noopener nofollow">
+          浙建人教函〔2024〕241号附件：全省建设行业专业技术人员网络继续教育平台汇总表（PDF）↗
+        </a>
+      </p>
+    </div>
+
+    <CtaBanner />
+  </article>
+</Base>

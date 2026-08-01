@@ -1,0 +1,33 @@
+---
+import { site } from '../config';
+
+interface Props {
+  /** 上下文提示语，如行业名 */
+  context?: string;
+}
+const { context } = Astro.props;
+const c = site.contact;
+---
+
+<!-- 侧栏 CTA 卡片（桌面端 sticky，移动端随文档流） -->
+<aside id="cta" class="rounded-xl border border-blue-200 bg-gradient-to-b from-blue-600 to-blue-700 p-5 text-white shadow-lg">
+  <p class="text-lg font-bold">{c.ctaTitle}</p>
+  <p class="mt-2 text-sm leading-6 text-blue-100">
+    {context ? `${context}：${c.ctaSubtitle}` : c.ctaSubtitle}
+  </p>
+  <div class="mt-4 space-y-2.5 rounded-lg bg-white/10 p-3 text-sm">
+    <p class="flex items-center gap-2">
+      <span>💬</span><span>微信：<strong class="text-base tracking-wide">{c.wechat}</strong></span>
+    </p>
+    <p class="flex items-center gap-2">
+      <span>📞</span><span>电话：<strong>{c.phone}</strong></span>
+    </p>
+    <p class="flex items-center gap-2">
+      <span>🐧</span><span>QQ：<strong>{c.qq}</strong></span>
+    </p>
+  </div>
+  {c.qrImage && (
+    <img src={c.qrImage} alt="微信咨询二维码" class="mx-auto mt-4 w-40 rounded-lg bg-white p-2" loading="lazy" />
+  )}
+  <p class="mt-3 text-center text-xs text-blue-200">添加微信请备注"学分"</p>
+</aside>

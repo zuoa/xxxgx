@@ -1,0 +1,18 @@
+---
+import { site } from '../config';
+const c = site.contact;
+---
+
+<!-- 页面底部通栏 CTA 横幅 -->
+<div class="mt-12 rounded-xl bg-gradient-to-r from-blue-700 to-indigo-700 p-6 text-center text-white shadow-lg md:p-8">
+  <p class="text-xl font-bold md:text-2xl">{c.ctaTitle}</p>
+  <p class="mx-auto mt-2 max-w-2xl text-sm leading-6 text-blue-100 md:text-base">{c.ctaSubtitle}</p>
+  <div class="mt-5 flex flex-wrap items-center justify-center gap-3">
+    <span class="rounded-lg bg-white px-5 py-2.5 font-bold text-blue-700">
+      微信：{c.wechat}
+    </span>
+    <span class="rounded-lg border border-white/40 px-5 py-2.5 font-semibold text-white">
+      电话：{c.phone}
+    </span>
+  </div>
+</div>

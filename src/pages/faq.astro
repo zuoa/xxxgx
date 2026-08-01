@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { site } from '../config';
+
+const title = '杭州继续教育学分常见问题FAQ_新干线注册/查分/补修/同步';
+const description = '杭州专业技术人员继续教育常见问题：新干线是什么、怎么注册选课、学分怎么查、学分不够怎么办、如何同步到职称申报系统、公需科目是不是12+6等高频问题解答。';
+
+const faqs = [
+  {
+    q: '"专业技术人员学习新干线"是什么平台？',
+    a: '新干线（learning.hzrs.hangzhou.gov.cn）是杭州市2011年上线的全市专业技术人员继续教育官方平台，已有注册单位1.6万家、用户46.7万人，上线5800余门专业课和15000余门公需课。杭州各系列职称评审的继续教育学分，原则上以新干线系统登记为准。',
+  },
+  {
+    q: '每年继续教育要修多少学分？',
+    a: '按杭州市学分制管理办法：每年累计不少于90学分，其中专业科目不少于60学分，行业公需和一般公需科目合计不少于18学分。注意公需科目只要求合计18分，政策原文没有"12+6"的拆分。',
+  },
+  {
+    q: '学分不够会影响职称申报吗？',
+    a: '会。继续教育学分完成情况是申报专业技术职务任职资格的必备条件，学分未达要求将取消申报资格。各行业系列还会在年度评审通知中规定累计口径（如"2024年以来合计240学分"）。',
+  },
+  {
+    q: '往年学分不够，可以补修吗？',
+    a: '目前只有建设工程系列明文允许集中补修：可在评审通知印发至个人申报前，通过12个指定网络平台补足2022-2025年度学时。其他行业能否补修以本系列当年评审通知为准，最稳妥的做法是按年达标、不留欠账。',
+  },
+  {
+    q: '在其他地市平台（宁波、温州等）学的课时，杭州认可吗？',
+    a: '认可。浙江省指定的12个网络继续教育平台学分互认，但杭州申报人须在新干线系统完成学分登记，登记后数据可自行同步到浙江省职称申报评审平台。',
+  },
+  {
+    q: '怎么查询自己的学分是否达标？',
+    a: '登录杭州市专业技术人员学习新干线系统，在个人中心查询已登记学分。申报前建议核对：①当年是否满90学分；②专业科目是否满60；③公需科目合计是否满18；④本系列要求的累计口径是否满足。',
+  },
+  {
+    q: '论文、专利、学历可以折算学分吗？',
+    a: '可以。例如核心期刊论文每篇25学分（第一作者加10分）、发明专利每项90学分、专业相关学历教育每年90学分。同一成果按最高学分折算不重复计算。完整规则见本站"学分折算"页。',
+  },
+  {
+    q: '新干线学习后学分多久到账？',
+    a: '在新干线平台在线学习的课程，根据课程内容和时间设定学分，由系统自动登分。其他平台学习或线下成果需按流程登记/申报，建议留出审核时间，不要等到申报截止前才操作。',
+  },
+  {
+    q: '学习年度怎么计算？',
+    a: '每年1月1日至12月31日为一个学习年度。单位对专业技术人员接受继续教育情况进行年度考核，学分完成情况纳入考核和岗位聘用依据。',
+  },
+  {
+    q: '我是自由职业/无单位，可以参加继续教育和职称评审吗？',
+    a: '可以注册新干线参加学习。职称申报方面，不同系列对自由职业者有不同安排（如文学创作系列的自由撰稿人需提供无犯罪记录证明），具体以对应系列当年评审通知为准。',
+  },
+];
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Base title={title} description={description} jsonLd={faqLd}>
+  <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
+    <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
+    <span class="text-gray-800">常见问题</span>
+  </nav>
+
+  <article class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm md:p-8">
+    <h1 class="text-2xl font-bold leading-snug text-gray-900 md:text-3xl">
+      杭州继续教育学分常见问题（FAQ）
+    </h1>
+    <p class="mt-2 text-sm text-gray-500">内容更新：{site.updatedAt}</p>
+
+    <div class="mt-6 divide-y divide-gray-200 rounded-lg border border-gray-200">
+      {faqs.map((f, i) => (
+        <details class="group px-4 py-4" open={i === 0}>
+          <summary class="cursor-pointer list-none font-medium text-gray-900 group-open:text-blue-700">
+            <span class="mr-2 inline-block transition group-open:rotate-90">▸</span>{f.q}
+          </summary>
+          <p class="mt-2 pl-6 text-sm leading-7 text-gray-700">{f.a}</p>
+        </details>
+      ))}
+    </div>
+
+    <div class="prose-content mt-8">
+      <h2>按行业查询</h2>
+      <p>
+        各行业系列的累计学分口径、申报时间、登记平台不同，请前往
+        <a href="/#hangye">各行业系列学分要求</a>查询本行业的具体规定。
+      </p>
+    </div>
+
+    <CtaBanner />
+  </article>
+</Base>

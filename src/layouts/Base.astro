@@ -1,0 +1,132 @@
+---
+import { site } from '../config';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** 供 JSON-LD 注入的结构化数据对象（可多个） */
+  jsonLd?: object | object[];
+}
+
+const { title, description, jsonLd } = Astro.props;
+const fullTitle = `${title}_${site.name}`;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const jsonLdList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+
+const nav = [
+  { href: '/', label: '首页' },
+  { href: '/hangye/jianshe-gongcheng/', label: '行业要求' },
+  { href: '/zhengce/', label: '政策解读' },
+  { href: '/pingtai/', label: '12平台名单' },
+  { href: '/xuefenguize/', label: '学分折算' },
+  { href: '/faq/', label: '常见问题' },
+];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="zh_CN" />
+    <meta name="robots" content="index,follow" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+    {jsonLdList.map((data) => (
+      <script type="application/ld+json" set:html={JSON.stringify(data)} />
+    ))}
+  </head>
+  <body class="flex min-h-screen flex-col bg-gray-50 text-gray-900 antialiased">
+    <header class="sticky top-0 z-40 border-b border-gray-200 bg-white/95 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+        <a href="/" class="flex shrink-0 items-center gap-2">
+          <span class="text-2xl">📚</span>
+          <span class="text-lg font-bold text-gray-900">{site.name}</span>
+        </a>
+        <nav class="hidden items-center gap-1 md:flex">
+          {nav.map((item) => (
+            <a
+              href={item.href}
+              class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-blue-700"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <a
+          href="#cta"
+          class="shrink-0 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+        >
+          学分咨询
+        </a>
+      </div>
+      <nav class="flex gap-1 overflow-x-auto border-t border-gray-100 px-4 py-1.5 md:hidden">
+        {nav.map((item) => (
+          <a
+            href={item.href}
+            class="shrink-0 rounded px-2.5 py-1 text-xs font-medium text-gray-600 hover:text-blue-700"
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </header>
+
+    <main class="mx-auto w-full max-w-6xl flex-1 px-4 py-8">
+      <slot />
+    </main>
+
+    <footer class="border-t border-gray-200 bg-white">
+      <div class="mx-auto max-w-6xl px-4 py-8">
+        <div class="grid gap-8 md:grid-cols-3">
+          <div>
+            <p class="font-bold text-gray-900">{site.name}</p>
+            <p class="mt-2 text-sm leading-6 text-gray-600">{site.tagline}</p>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-gray-900">咨询方式</p>
+            <ul class="mt-2 space-y-1 text-sm text-gray-600">
+              <li>微信：{site.contact.wechat}</li>
+              <li>电话：{site.contact.phone}</li>
+              <li>QQ：{site.contact.qq}</li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-gray-900">官方平台</p>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>
+                <a href="https://learning.hzrs.hangzhou.gov.cn/" target="_blank" rel="noopener" class="text-blue-600 hover:underline">
+                  杭州市专业技术人员学习新干线
+                </a>
+              </li>
+              <li>
+                <a href="https://zjjx.rlsbt.zj.gov.cn/" target="_blank" rel="noopener" class="text-blue-600 hover:underline">
+                  浙江省继续教育学时登记管理系统
+                </a>
+              </li>
+              <li>
+                <a href="https://zcps.rlsbt.zj.gov.cn/" target="_blank" rel="noopener" class="text-blue-600 hover:underline">
+                  浙江省职称申报评审平台
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-8 border-t border-gray-100 pt-4 text-xs leading-5 text-gray-500">
+          <p>
+            本站为继续教育学分政策信息整理与学习辅助服务网站，内容整理自杭州市人社局、浙江省人社厅等公开发布的政策文件，
+            最新要求以各行业主管部门当年评审通知为准。内容更新：{site.updatedAt}
+          </p>
+          <p class="mt-1">© 2026 {site.name}</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

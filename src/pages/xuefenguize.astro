@@ -1,0 +1,111 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { site } from '../config';
+
+const title = '杭州继续教育学分折算规则速查表_面授/学历/论文/专利各多少分';
+const description = '杭州市专业技术人员继续教育学分折算规则速查：面授1天8学分、学历教育每年90分、资格考试每科36分、核心论文25分/篇、发明专利90分/项。依据杭州市学分制管理办法第八条整理。';
+---
+
+<Base title={title} description={description}>
+  <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
+    <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
+    <span class="text-gray-800">学分折算速查</span>
+  </nav>
+
+  <article class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm md:p-8">
+    <h1 class="text-2xl font-bold leading-snug text-gray-900 md:text-3xl">
+      杭州继续教育学分折算规则速查表
+    </h1>
+    <p class="mt-2 text-sm text-gray-500">
+      依据：《杭州市专业技术人员继续教育学分制管理办法》第八条 · 内容更新：{site.updatedAt}
+    </p>
+
+    <div class="prose-content mt-6">
+      <p>
+        除了在线学习，面授培训、学历教育、资格考试、论文、专利、课题等均可折算继续教育学分。
+        同一成果或内容<strong>按最高学分折算计算，不重复计算</strong>。
+      </p>
+
+      <h2>一、培训学习类</h2>
+      <table>
+        <thead>
+          <tr><th>途径</th><th>折算学分</th><th>计入科目</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>面授培训</td><td>1 天 = <strong>8 学分</strong></td><td>专业科目</td></tr>
+          <tr><td>国（境）外培训</td><td>按实际天数，每天 <strong>8 学分</strong></td><td>专业科目</td></tr>
+          <tr><td>专业学术会议</td><td>每天 <strong>8 学分</strong></td><td>专业科目</td></tr>
+        </tbody>
+      </table>
+
+      <h2>二、学历教育与考试类</h2>
+      <table>
+        <thead>
+          <tr><th>途径</th><th>折算学分</th><th>计入科目</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>专业相关学历（学位）教育</td><td>每年 <strong>90 学分</strong></td><td>专业科目</td></tr>
+          <tr><td>非专业相关学历（学位）教育</td><td>每年 <strong>30 学分</strong></td><td>一般公需科目</td></tr>
+          <tr><td>专业技术资格、职（执）业资格考试</td><td>每年每个合格科目 <strong>36 学分</strong></td><td>专业科目</td></tr>
+          <tr><td>全国计算机应用能力考试</td><td>每个合格模块 <strong>6 学分</strong></td><td>一般公需科目</td></tr>
+          <tr><td>职称外语考试合格</td><td><strong>24 学分</strong></td><td>一般公需科目</td></tr>
+        </tbody>
+      </table>
+
+      <h2>三、课题与规划类</h2>
+      <table>
+        <thead>
+          <tr><th>课题/规划级别</th><th>折算学分（专业科目）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>国家级</td><td><strong>90 学分</strong>/项</td></tr>
+          <tr><td>省部级</td><td><strong>70 学分</strong>/项</td></tr>
+          <tr><td>市厅级</td><td><strong>50 学分</strong>/项</td></tr>
+          <tr><td>县处级</td><td><strong>30 学分</strong>/项</td></tr>
+        </tbody>
+      </table>
+
+      <h2>四、著作与论文类</h2>
+      <table>
+        <thead>
+          <tr><th>成果类型</th><th>折算学分（专业科目）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>出版著作（译作）</td><td>每万字 <strong>15 学分</strong></td></tr>
+          <tr><td>核心期刊论文（译文）</td><td>每篇 <strong>25 学分</strong>，第一作者另加 <strong>10 分</strong></td></tr>
+          <tr><td>一般期刊论文（译文）</td><td>每篇 <strong>15 学分</strong>，第一作者另加 <strong>5 分</strong></td></tr>
+          <tr><td>正式期刊增刊/内部刊物</td><td>每篇 <strong>10 学分</strong>，第一作者另加 <strong>5 分</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h2>五、专利类</h2>
+      <table>
+        <thead>
+          <tr><th>专利类型</th><th>折算学分（专业科目）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>发明专利</td><td>每项 <strong>90 学分</strong></td></tr>
+          <tr><td>实用新型专利</td><td>每项 <strong>50 学分</strong></td></tr>
+          <tr><td>外观设计专利</td><td>每项 <strong>20 学分</strong></td></tr>
+        </tbody>
+      </table>
+
+      <h2>注意事项</h2>
+      <ul>
+        <li>同一成果或内容按<strong>最高学分</strong>折算，不重复计算；</li>
+        <li>成果类学分须在杭州新干线系统登记后方可计入；</li>
+        <li>部分行业系列（如自然科研）有本行业的折算细则，与市级折算标准不同，请同时查看<a href="/#hangye">对应行业页</a>；</li>
+        <li>年度底线：全年合计≥90学分，其中专业科目≥60、行业公需和一般公需合计≥18，折算学分同样须满足科目结构要求。</li>
+      </ul>
+      <p>
+        政策原文：
+        <a href="https://zfgb.hangzhou.gov.cn/upload/default/bigfile/2025/06/06/20250606_c51b0c7c71a7689b16604e5aa195c524.pdf" target="_blank" rel="noopener nofollow">
+          杭州市专业技术人员继续教育学分制管理办法（PDF）↗
+        </a>
+      </p>
+    </div>
+
+    <CtaBanner />
+  </article>
+</Base>

@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config';
+
+const title = '关于我们_联系方式';
+const description = `${site.name}：杭州继续教育学分政策信息整理与在线学习辅助服务。联系方式、服务内容与免责声明。`;
+const c = site.contact;
+---
+
+<Base title={title} description={description}>
+  <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
+    <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
+    <span class="text-gray-800">关于我们</span>
+  </nav>
+
+  <div class="grid gap-8 lg:grid-cols-[1fr_320px]">
+    <article class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm md:p-8">
+      <h1 class="text-2xl font-bold text-gray-900 md:text-3xl">关于我们</h1>
+      <div class="prose-content mt-4">
+        <p>
+          {site.name}专注于杭州专业技术人员继续教育学分领域，做两件事：
+        </p>
+        <ul>
+          <li>
+            <strong>政策信息整理</strong>：持续跟踪杭州市人社局、浙江省人社厅及各行业主管部门发布的
+            继续教育与职称评审政策，按行业整理为清晰易查的指南；
+          </li>
+          <li>
+            <strong>在线学习辅助</strong>：为时间紧张的专业技术人员提供新干线在线学习辅助、
+            学分规划建议，帮助按"每年90学分"的节奏稳定达标。
+          </li>
+        </ul>
+        <h2>服务内容</h2>
+        <ul>
+          <li>新干线在线课程学习辅助（专业科目 / 公需科目）</li>
+          <li>学分结构规划：专业科目60 + 公需科目合计18的达标方案</li>
+          <li>申报前学分自查：累计口径核对、登记状态确认</li>
+          <li>各行业系列评审政策咨询</li>
+        </ul>
+        <h2>免责声明</h2>
+        <p>
+          本站政策内容整理自政府部门公开发布的文件与通知，仅供参考；
+          具体申报条件、时间、学分口径以各行业主管部门当年正式评审通知为准。
+          如本站内容与官方文件不一致，以官方文件为准。
+        </p>
+      </div>
+    </article>
+
+    <aside class="h-fit rounded-xl border border-blue-200 bg-gradient-to-b from-blue-600 to-blue-700 p-6 text-white shadow-lg lg:sticky lg:top-24">
+      <h2 class="text-lg font-bold">联系我们</h2>
+      <div class="mt-4 space-y-3 rounded-lg bg-white/10 p-4 text-sm">
+        <p>💬 微信：<strong class="text-base">{c.wechat}</strong></p>
+        <p>📞 电话：<strong>{c.phone}</strong></p>
+        <p>🐧 QQ：<strong>{c.qq}</strong></p>
+      </div>
+      {c.qrImage && (
+        <img src={c.qrImage} alt="微信咨询二维码" class="mx-auto mt-4 w-44 rounded-lg bg-white p-2" loading="lazy" />
+      )}
+      <p class="mt-4 text-center text-xs text-blue-200">添加微信请备注"学分"，工作时间快速响应</p>
+    </aside>
+  </div>
+</Base>

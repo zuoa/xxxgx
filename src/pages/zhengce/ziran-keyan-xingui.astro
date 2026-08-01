@@ -1,0 +1,97 @@
+---
+import Base from '../../layouts/Base.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { site } from '../../config';
+
+const title = '浙江省自然科研系列继续教育2026新规解读（浙科发才〔2026〕14号）';
+const description = '浙江省自然科学研究系列继续教育学时登记细则2026年5月10日施行：专业科目分A类（每途径≤36学时）B类（每途径≤30学时），成果申报期从60天延长至90天，12月申报截止次年3月31日。';
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  inLanguage: 'zh-CN',
+  dateModified: '2026-08-01',
+  author: { '@type': 'Organization', name: site.name },
+};
+---
+
+<Base title={title} description={description} jsonLd={articleLd}>
+  <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
+    <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
+    <a href="/zhengce/" class="hover:text-blue-600">政策解读</a><span class="mx-1.5">/</span>
+    <span class="text-gray-800">自然科研新规</span>
+  </nav>
+
+  <article class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm md:p-8">
+    <h1 class="text-2xl font-bold leading-snug text-gray-900 md:text-3xl">
+      自然科研系列继续教育 2026 新规解读（浙科发才〔2026〕14号）
+    </h1>
+    <p class="mt-2 text-sm text-gray-500">施行日期：2026年5月10日 · 内容更新：2026-08-01</p>
+
+    <div class="prose-content mt-6">
+      <h2>一、适用范围与年度要求</h2>
+      <p>
+        新规适用于自然科学研究系列专业技术人员（研究实习员、助理研究员、副研究员、研究员）。
+        每年度继续教育应达到<strong>90学时，其中行业公需和一般公需科目合计不少于18学时，专业科目不少于60学时</strong>。
+      </p>
+
+      <h2>二、最大变化：专业科目分A、B两类</h2>
+      <table>
+        <thead>
+          <tr><th>类别</th><th>途径性质</th><th>每途径上限</th><th>典型途径</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>A类</strong></td>
+            <td>学习培训</td>
+            <td>36 学时</td>
+            <td>高研项目（每天≤12）、在线课件、学术研讨（每天≤12）、科技特派员（每天8）</td>
+          </tr>
+          <tr>
+            <td><strong>B类</strong></td>
+            <td>成果折算</td>
+            <td>30 学时</td>
+            <td>科技项目、论文、专利、标准、奖励、决策报告、在职学历教育</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        设置上限的意图（官方解读）：引导科研人员<strong>长期、稳定、多途径</strong>开展继续教育，
+        避免靠单一途径（如只刷在线课或只靠一篇论文）凑满学时。
+      </p>
+
+      <h2>三、申报时限放宽</h2>
+      <ul>
+        <li>成果类学分申报：项目结束后 <strong>90天内</strong>（原60天）；</li>
+        <li>12月份的学分申报：截止<strong>次年3月31日</strong>（原12月底）。</li>
+      </ul>
+
+      <h2>四、与职称申报的关系</h2>
+      <p>
+        细则第八条明确：继续教育学时要求作为自然科研系列专业技术职务任职资格申报的<strong>必备条件</strong>。
+        申报时应提交继续教育学时登记情况表及相关证明材料。
+      </p>
+
+      <h2>五、详细折算标准</h2>
+      <p>各类成果的具体学时折算标准，见本站<a href="/hangye/ziran-keyan/">自然科研系列专题页</a>的完整表格。</p>
+
+      <h2>政策原文与官方解读</h2>
+      <ul>
+        <li>
+          <a href="https://kjt.zj.gov.cn/col/col1229080140/art/2026/art_016636e22fcc42d5baf1057cf033ee6f.html" target="_blank" rel="noopener nofollow">
+            浙科发才〔2026〕14号细则全文（浙江省科技厅）↗
+          </a>
+        </li>
+        <li>
+          <a href="https://www.zj.gov.cn/col/col1229093916/art/2026/art_8ac37561fa4b70a1932db1637fa8b612.html" target="_blank" rel="noopener nofollow">
+            浙江省政府门户网站官方解读 ↗
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <CtaBanner />
+  </article>
+</Base>

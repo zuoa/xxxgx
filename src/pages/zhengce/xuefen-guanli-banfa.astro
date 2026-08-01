@@ -1,0 +1,96 @@
+---
+import Base from '../../layouts/Base.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { site } from '../../config';
+
+const title = '杭州市专业技术人员继续教育学分制管理办法解读（2026）';
+const description = '逐条解读《杭州市专业技术人员继续教育学分制管理办法》：每年90学分构成、学分折算规则、新干线系统登记、学分与职称申报的关系，附政策原文PDF。';
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  inLanguage: 'zh-CN',
+  dateModified: '2026-08-01',
+  author: { '@type': 'Organization', name: site.name },
+};
+---
+
+<Base title={title} description={description} jsonLd={articleLd}>
+  <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
+    <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
+    <a href="/zhengce/" class="hover:text-blue-600">政策解读</a><span class="mx-1.5">/</span>
+    <span class="text-gray-800">学分制管理办法</span>
+  </nav>
+
+  <article class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm md:p-8">
+    <h1 class="text-2xl font-bold leading-snug text-gray-900 md:text-3xl">
+      杭州市《专业技术人员继续教育学分制管理办法》解读
+    </h1>
+    <p class="mt-2 text-sm text-gray-500">来源：杭州市人民政府公报（2025-06-06） · 内容更新：2026-08-01</p>
+
+    <div class="prose-content mt-6">
+      <h2>一、学分构成（第六条）</h2>
+      <p>继续教育学分由三部分组成：</p>
+      <ul>
+        <li><strong>专业科目学分</strong></li>
+        <li><strong>行业公需科目学分</strong></li>
+        <li><strong>一般公需科目学分</strong></li>
+      </ul>
+
+      <h2>二、年度学分底线（第七条）</h2>
+      <blockquote>
+        专业技术人员参加继续教育的时间，每年累计不少于90学分，其中专业科目不少于60学分，行业公需和一般公需科目不少于18学分。
+      </blockquote>
+      <table>
+        <thead>
+          <tr><th>科目类别</th><th>每年最低要求</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>全部科目合计</td><td><strong>≥ 90 学分</strong></td></tr>
+          <tr><td>专业科目</td><td><strong>≥ 60 学分</strong></td></tr>
+          <tr><td>行业公需 + 一般公需（合计）</td><td><strong>≥ 18 学分</strong></td></tr>
+        </tbody>
+      </table>
+      <p>
+        <strong>注意</strong>：政策原文只规定公需科目"合计不少于18学分"，<strong>没有</strong>拆分为"一般公需12 + 行业公需6"。
+        任何写作"12+6"的资料都是错误的。
+      </p>
+
+      <h2>三、学分折算（第八条要点）</h2>
+      <ul>
+        <li>面授培训 1 天 = 8 学分；</li>
+        <li>专业相关学历（学位）教育，每年折算专业科目 90 学分；</li>
+        <li>专业技术资格、职（执）业资格考试，每年每个合格科目折算专业科目 36 学分；</li>
+        <li>核心期刊论文每篇 25 学分（第一作者另加 10 分）；</li>
+        <li>发明专利每项 90 学分、实用新型 50 学分、外观设计 20 学分；</li>
+        <li>同一成果按最高学分折算，不重复计算。</li>
+      </ul>
+      <p>完整折算表见<a href="/xuefenguize/">学分折算规则速查</a>。</p>
+
+      <h2>四、学分登记（第十二条）</h2>
+      <p>
+        继续教育学分如实登记到"专业技术人员学习新干线"网站继续教育信息管理系统，
+        各级组织和专业技术人员可通过该系统查询培训学分情况。在"学习新干线"在线学习的，
+        根据课程内容和时间设定学分，由<strong>系统自动登分</strong>。
+      </p>
+
+      <h2>五、学分与职称的关系（第十四至十六条）</h2>
+      <ul>
+        <li>每年1月1日至12月31日为一个学习年度，单位对继续教育情况进行年度考核；</li>
+        <li>学分完成情况是考核评价和岗位聘用的重要依据，是<strong>申报专业技术职务任职资格的必备条件</strong>，并纳入评审指标体系；</li>
+        <li>学分数量未达要求，或在学分登记中<strong>弄虚作假</strong>的，<strong>取消专业技术职务任职资格申报资格</strong>。</li>
+      </ul>
+
+      <h2>政策原文</h2>
+      <p>
+        <a href="https://zfgb.hangzhou.gov.cn/upload/default/bigfile/2025/06/06/20250606_c51b0c7c71a7689b16604e5aa195c524.pdf" target="_blank" rel="noopener nofollow">
+          杭州市人民政府公报：专业技术人员继续教育学分制管理办法（PDF 全文）↗
+        </a>
+      </p>
+    </div>
+
+    <CtaBanner />
+  </article>
+</Base>

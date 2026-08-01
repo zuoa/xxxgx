@@ -1,0 +1,70 @@
+---
+import Base from '../../layouts/Base.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { site } from '../../config';
+
+const title = '浙江省专业技术人员继续教育学时管理办法解读（浙人社发〔2016〕63号）';
+const description = '解读浙人社发〔2016〕63号《浙江省专业技术人员继续教育学时管理办法》：每年90学时（专业科目60+公需科目合计18），与杭州市学分制办法的对应关系，行业学时登记细则备案制度。';
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  inLanguage: 'zh-CN',
+  dateModified: '2026-08-01',
+  author: { '@type': 'Organization', name: site.name },
+};
+---
+
+<Base title={title} description={description} jsonLd={articleLd}>
+  <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
+    <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
+    <a href="/zhengce/" class="hover:text-blue-600">政策解读</a><span class="mx-1.5">/</span>
+    <span class="text-gray-800">省学时管理办法</span>
+  </nav>
+
+  <article class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm md:p-8">
+    <h1 class="text-2xl font-bold leading-snug text-gray-900 md:text-3xl">
+      《浙江省专业技术人员继续教育学时管理办法》（浙人社发〔2016〕63号）解读
+    </h1>
+    <p class="mt-2 text-sm text-gray-500">发文：浙江省人力资源和社会保障厅 · 内容更新：2026-08-01</p>
+
+    <div class="prose-content mt-6">
+      <h2>一、年度学时底线（第八条）</h2>
+      <blockquote>
+        专业技术人员每年度参加继续教育不得少于90学时，其中专业科目不少于60学时，行业公需和一般公需科目不少于18学时。部分学时须通过专项知识考试取得。
+      </blockquote>
+      <p>
+        省级办法与杭州市学分制管理办法的年度要求完全一致：<strong>90 / 60 / 18（合计）</strong>。
+        杭州在"学分"语境下执行，省级文件在"学时"语境下执行，两者数字口径一致。
+      </p>
+
+      <h2>二、行业细则备案制度（第九条）</h2>
+      <blockquote>
+        专业科目学习由省级行业主管部门制定《行业专业技术人员继续教育学时登记细则》，明确学习内容、途径，以及学时数量、登记标准，报省人力社保厅备案。各地结合实际，进行细化完善。
+      </blockquote>
+      <p>
+        这就是各行业系列学时要求"各不相同"的制度来源：省定底线（90/60/18），
+        <strong>行业主管部门定细则</strong>。例如自然科研系列的
+        <a href="/hangye/ziran-keyan/">A/B类专业科目登记细则</a>即为该制度下的行业细则。
+      </p>
+
+      <h2>三、与职称申报的关系</h2>
+      <p>
+        继续教育学时完成情况是申报专业技术职务任职资格的必备条件。
+        各行业系列每年的评审通知会在省级底线之上明确本系列的累计口径
+        （如"2024年以来合计240学分"），申报人应以<strong>本系列当年评审通知</strong>为最终依据。
+      </p>
+
+      <h2>政策原文</h2>
+      <p>
+        <a href="https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web3500/site/other/P0201704/P020170425/P020170425571615435931.pdf" target="_blank" rel="noopener nofollow">
+          浙人社发〔2016〕63号《浙江省专业技术人员继续教育学时管理办法》（PDF 全文）↗
+        </a>
+      </p>
+    </div>
+
+    <CtaBanner />
+  </article>
+</Base>
