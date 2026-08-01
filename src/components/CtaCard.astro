@@ -9,8 +9,8 @@ const { context } = Astro.props;
 const c = site.contact;
 ---
 
-<!-- 侧栏 CTA 卡片（桌面端 sticky，移动端随文档流） -->
-<aside id="cta" class="relative overflow-hidden rounded-2xl bg-gradient-to-b from-blue-600 to-indigo-700 p-5 text-white shadow-lg shadow-blue-200">
+<!-- 侧栏 CTA 卡片（桌面端 sticky，移动端随文档流）；锚点 id 在 CtaBanner 上 -->
+<aside class="relative overflow-hidden rounded-2xl bg-gradient-to-b from-blue-600 to-indigo-700 p-5 text-white shadow-lg shadow-blue-200">
   <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/10"></div>
   <div class="absolute -bottom-12 -left-8 h-28 w-28 rounded-full bg-white/5"></div>
   <div class="relative">
