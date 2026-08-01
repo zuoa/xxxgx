@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../config';
+import { breadcrumbLd } from '../seo';
 
 const title = '浙江省12个指定网络继续教育平台名单（2026）_杭州新干线';
 const description = '浙江省建设行业专业技术人员网络继续教育平台完整名单（浙建人教函〔2024〕241号）：覆盖杭州、宁波、温州等11地市共12个指定平台，建设工程系列补修学时任选其一均有效。';
@@ -44,9 +45,11 @@ const faqLd = {
     },
   ],
 };
+
+const jsonLd = [breadcrumbLd([{ name: '12平台名单', href: '/pingtai/' }]), faqLd];
 ---
 
-<Base title={title} description={description} jsonLd={faqLd}>
+<Base title={title} description={description} jsonLd={jsonLd}>
   <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
     <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
     <span class="text-gray-800">12平台名单</span>

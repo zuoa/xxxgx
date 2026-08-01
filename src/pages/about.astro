@@ -1,13 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
 import { site } from '../config';
+import { breadcrumbLd } from '../seo';
 
 const title = '关于我们_联系方式';
 const description = `${site.name}：杭州继续教育学分政策信息整理与在线学习辅助服务。联系方式、服务内容与免责声明。`;
 const c = site.contact;
+
+const jsonLd = breadcrumbLd([{ name: '关于我们', href: '/about/' }]);
 ---
 
-<Base title={title} description={description}>
+<Base title={title} description={description} jsonLd={jsonLd}>
   <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
     <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
     <span class="text-gray-800">关于我们</span>

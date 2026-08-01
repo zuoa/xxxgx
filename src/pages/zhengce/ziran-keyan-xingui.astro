@@ -3,22 +3,21 @@ import Base from '../../layouts/Base.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import Icon from '../../components/Icon.astro';
 import { site } from '../../config';
+import { articleLd, breadcrumbLd } from '../../seo';
 
 const title = '浙江省自然科研系列继续教育2026新规解读（浙科发才〔2026〕14号）';
 const description = '浙江省自然科学研究系列继续教育学时登记细则2026年5月10日施行：专业科目分A类（每途径≤36学时）B类（每途径≤30学时），成果申报期从60天延长至90天，12月申报截止次年3月31日。';
 
-const articleLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: title,
-  description,
-  inLanguage: 'zh-CN',
-  dateModified: '2026-08-01',
-  author: { '@type': 'Organization', name: site.name },
-};
+const jsonLd = [
+  articleLd({ headline: title, description, path: '/zhengce/ziran-keyan-xingui/' }),
+  breadcrumbLd([
+    { name: '政策解读', href: '/zhengce/' },
+    { name: '自然科研新规', href: '/zhengce/ziran-keyan-xingui/' },
+  ]),
+];
 ---
 
-<Base title={title} description={description} jsonLd={articleLd}>
+<Base title={title} description={description} jsonLd={jsonLd}>
   <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
     <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
     <a href="/zhengce/" class="hover:text-blue-600">政策解读</a><span class="mx-1.5">/</span>

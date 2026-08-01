@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../config';
+import { breadcrumbLd } from '../seo';
 
 const title = '杭州继续教育学分常见问题FAQ_新干线注册/查分/补修/同步';
 const description = '杭州专业技术人员继续教育常见问题：新干线是什么、怎么注册选课、学分怎么查、学分不够怎么办、如何同步到职称申报系统、公需科目是不是12+6等高频问题解答。';
@@ -59,9 +60,11 @@ const faqLd = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+
+const jsonLd = [breadcrumbLd([{ name: '常见问题', href: '/faq/' }]), faqLd];
 ---
 
-<Base title={title} description={description} jsonLd={faqLd}>
+<Base title={title} description={description} jsonLd={jsonLd}>
   <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
     <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
     <span class="text-gray-800">常见问题</span>

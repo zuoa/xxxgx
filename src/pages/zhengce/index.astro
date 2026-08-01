@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import Icon from '../../components/Icon.astro';
+import { breadcrumbLd } from '../../seo';
 
 const title = '继续教育学分政策解读_杭州专业技术人员学习新干线';
 const description = '杭州市与浙江省继续教育学分/学时政策解读专栏：学分制管理办法、省学时管理办法、自然科研2026新规，逐条讲解90学分构成、折算规则与职称申报的关系。';
@@ -29,9 +30,11 @@ const articles = [
     tagCls: 'bg-emerald-50 text-emerald-700',
   },
 ];
+
+const breadcrumb = breadcrumbLd([{ name: '政策解读', href: '/zhengce/' }]);
 ---
 
-<Base title={title} description={description}>
+<Base title={title} description={description} jsonLd={breadcrumb}>
   <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
     <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
     <span class="text-gray-800">政策解读</span>

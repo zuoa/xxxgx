@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import Icon from '../components/Icon.astro';
 import { site, cities } from '../config';
+import { organization } from '../seo';
 
 const industries = (await getCollection('hangye')).sort((a, b) => a.data.order - b.data.order);
 
@@ -41,10 +42,17 @@ const websiteLd = {
   url: site.url,
   description: site.description,
   inLanguage: 'zh-CN',
+  publisher: organization,
+};
+
+const organizationLd = {
+  '@context': 'https://schema.org',
+  ...organization,
+  description: site.tagline,
 };
 ---
 
-<Base title={site.tagline} description={site.description} jsonLd={websiteLd}>
+<Base title={site.tagline} description={site.description} jsonLd={[websiteLd, organizationLd]}>
   <!-- Hero -->
   <section class="relative overflow-hidden rounded-2xl bg-slate-900 text-white shadow-xl">
     <div class="absolute inset-0 bg-gradient-to-br from-blue-950 via-slate-900 to-indigo-950"></div>

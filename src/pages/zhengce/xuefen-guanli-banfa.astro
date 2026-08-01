@@ -3,22 +3,21 @@ import Base from '../../layouts/Base.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import Icon from '../../components/Icon.astro';
 import { site } from '../../config';
+import { articleLd, breadcrumbLd } from '../../seo';
 
 const title = '杭州市专业技术人员继续教育学分制管理办法解读（2026）';
 const description = '逐条解读《杭州市专业技术人员继续教育学分制管理办法》：每年90学分构成、学分折算规则、新干线系统登记、学分与职称申报的关系，附政策原文PDF。';
 
-const articleLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: title,
-  description,
-  inLanguage: 'zh-CN',
-  dateModified: '2026-08-01',
-  author: { '@type': 'Organization', name: site.name },
-};
+const jsonLd = [
+  articleLd({ headline: title, description, path: '/zhengce/xuefen-guanli-banfa/' }),
+  breadcrumbLd([
+    { name: '政策解读', href: '/zhengce/' },
+    { name: '学分制管理办法', href: '/zhengce/xuefen-guanli-banfa/' },
+  ]),
+];
 ---
 
-<Base title={title} description={description} jsonLd={articleLd}>
+<Base title={title} description={description} jsonLd={jsonLd}>
   <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
     <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
     <a href="/zhengce/" class="hover:text-blue-600">政策解读</a><span class="mx-1.5">/</span>

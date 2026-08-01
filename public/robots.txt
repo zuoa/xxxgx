@@ -1,4 +1,32 @@
 User-agent: *
 Allow: /
 
+# AI 搜索引擎爬虫（显式欢迎抓取，助力 GEO）
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
 Sitemap: https://zcsb123.com/sitemap-index.xml

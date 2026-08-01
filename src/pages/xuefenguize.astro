@@ -3,12 +3,15 @@ import Base from '../layouts/Base.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../config';
+import { breadcrumbLd } from '../seo';
 
 const title = '杭州继续教育学分折算规则速查表_面授/学历/论文/专利各多少分';
 const description = '杭州市专业技术人员继续教育学分折算规则速查：面授1天8学分、学历教育每年90分、资格考试每科36分、核心论文25分/篇、发明专利90分/项。依据杭州市学分制管理办法第八条整理。';
+
+const jsonLd = breadcrumbLd([{ name: '学分折算', href: '/xuefenguize/' }]);
 ---
 
-<Base title={title} description={description}>
+<Base title={title} description={description} jsonLd={jsonLd}>
   <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
     <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
     <span class="text-gray-800">学分折算速查</span>

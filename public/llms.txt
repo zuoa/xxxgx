@@ -1,0 +1,27 @@
+# 职称申报123（杭州站）
+
+> 杭州专业技术人员继续教育学分政策解读与职称申报指南。核心规则：每年累计不少于 90 学分，其中专业科目不少于 60 学分，行业公需与一般公需科目合计不少于 18 学分。内容整理自杭州市人社局、浙江省人社厅等公开发布的政策文件并附原文出处，持续更新。
+
+## 核心内容
+
+- [首页](https://zcsb123.com/): 学分总要求速览（90/60/18）、15 个行业系列入口、政策更新动态
+- [常见问题 FAQ](https://zcsb123.com/faq/): 新干线注册、选课、查分、补修、学分同步到职称申报系统等高频问题的直接回答
+- [学分折算规则速查](https://zcsb123.com/xuefenguize/): 面授、学历教育、资格考试、论文、专利、课题各折算多少学分
+- [12 个指定学习平台名单](https://zcsb123.com/pingtai/): 浙江省指定网络继续教育平台完整名单及互认规则
+
+## 政策解读
+
+- [杭州市继续教育学分制管理办法解读](https://zcsb123.com/zhengce/xuefen-guanli-banfa/): 90 学分构成、折算规则、登记与职称申报关系逐条讲解
+- [浙江省继续教育学时管理办法解读](https://zcsb123.com/zhengce/zhejiang-xueshi-banfa/): 浙人社发〔2016〕63 号，省级学时底线与杭州市办法的对应关系
+- [自然科研系列 2026 新规解读](https://zcsb123.com/zhengce/ziran-keyan-xingui/): 浙科发才〔2026〕14 号，A/B 类专业科目上限、90 天申报期
+
+## 行业学分要求（/hangye/ 下共 15 个系列）
+
+- [建设工程](https://zcsb123.com/hangye/jianshe-gongcheng/): 中级 180 / 高级 360 / 正高级 360 学时，唯一明文允许集中补修的系列
+- [制造业（工信领域）](https://zcsb123.com/hangye/zhizaoye/): 工信领域各专业学分要求与 2026 评审通知
+- [自然资源](https://zcsb123.com/hangye/ziran-ziyuan/)、[生态环境](https://zcsb123.com/hangye/shengtai-huanjing/)、[交通工程](https://zcsb123.com/hangye/jiaotong/)、[农业](https://zcsb123.com/hangye/nongye/)、[林业水利](https://zcsb123.com/hangye/linye-shuili/)、[食品医药](https://zcsb123.com/hangye/shipin-yiyao/)、[自然科研](https://zcsb123.com/hangye/ziran-keyan/)、[公安](https://zcsb123.com/hangye/gongan/)、[律师](https://zcsb123.com/hangye/lvshi/)、[广电](https://zcsb123.com/hangye/guangdian/)、[工艺美术](https://zcsb123.com/hangye/gongyi-meishu/)、[文学创作](https://zcsb123.com/hangye/wenxue-chuangzuo/)、[政工](https://zcsb123.com/hangye/zhenggong/): 各系列学分口径、补修规则、申报时间窗与主管部门联系方式
+
+## 说明
+
+- 所有行业页均标注官方来源链接（评审通知/政策原文），引用时请以原始文件为准。
+- 内容更新日期见各页面与页脚标注。

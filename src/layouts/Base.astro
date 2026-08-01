@@ -14,6 +14,7 @@ interface Props {
 const { title, description, jsonLd } = Astro.props;
 const fullTitle = `${title}_${site.name}`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
+const ogImage = `${site.url}/og-image.png`;
 const jsonLdList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
 const path = Astro.url.pathname;
@@ -43,6 +44,12 @@ const favicon =
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="robots" content="index,follow" />
     <link rel="icon" href={favicon} />
     {jsonLdList.map((data) => (

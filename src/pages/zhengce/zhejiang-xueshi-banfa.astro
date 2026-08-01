@@ -3,22 +3,21 @@ import Base from '../../layouts/Base.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import Icon from '../../components/Icon.astro';
 import { site } from '../../config';
+import { articleLd, breadcrumbLd } from '../../seo';
 
 const title = '浙江省专业技术人员继续教育学时管理办法解读（浙人社发〔2016〕63号）';
 const description = '解读浙人社发〔2016〕63号《浙江省专业技术人员继续教育学时管理办法》：每年90学时（专业科目60+公需科目合计18），与杭州市学分制办法的对应关系，行业学时登记细则备案制度。';
 
-const articleLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: title,
-  description,
-  inLanguage: 'zh-CN',
-  dateModified: '2026-08-01',
-  author: { '@type': 'Organization', name: site.name },
-};
+const jsonLd = [
+  articleLd({ headline: title, description, path: '/zhengce/zhejiang-xueshi-banfa/' }),
+  breadcrumbLd([
+    { name: '政策解读', href: '/zhengce/' },
+    { name: '省学时管理办法', href: '/zhengce/zhejiang-xueshi-banfa/' },
+  ]),
+];
 ---
 
-<Base title={title} description={description} jsonLd={articleLd}>
+<Base title={title} description={description} jsonLd={jsonLd}>
   <nav aria-label="面包屑" class="mb-5 text-sm text-gray-500">
     <a href="/" class="hover:text-blue-600">首页</a><span class="mx-1.5">/</span>
     <a href="/zhengce/" class="hover:text-blue-600">政策解读</a><span class="mx-1.5">/</span>
