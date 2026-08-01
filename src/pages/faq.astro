@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+import Icon from '../components/Icon.astro';
 import { site } from '../config';
 
 const title = '杭州继续教育学分常见问题FAQ_新干线注册/查分/补修/同步';
@@ -75,8 +76,9 @@ const faqLd = {
     <div class="mt-6 divide-y divide-gray-200 rounded-lg border border-gray-200">
       {faqs.map((f, i) => (
         <details class="group px-4 py-4" open={i === 0}>
-          <summary class="cursor-pointer list-none font-medium text-gray-900 group-open:text-blue-700">
-            <span class="mr-2 inline-block transition group-open:rotate-90">▸</span>{f.q}
+          <summary class="flex cursor-pointer list-none items-center gap-2 font-medium text-gray-900 group-open:text-blue-700">
+            <Icon name="chevron" class="h-4 w-4 shrink-0 text-gray-400 transition group-open:rotate-90 group-open:text-blue-600" />
+            {f.q}
           </summary>
           <p class="mt-2 pl-6 text-sm leading-7 text-gray-700">{f.a}</p>
         </details>

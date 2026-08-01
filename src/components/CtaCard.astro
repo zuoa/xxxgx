@@ -10,24 +10,15 @@ const c = site.contact;
 ---
 
 <!-- 侧栏 CTA 卡片（桌面端 sticky，移动端随文档流） -->
-<aside id="cta" class="rounded-xl border border-blue-200 bg-gradient-to-b from-blue-600 to-blue-700 p-5 text-white shadow-lg">
-  <p class="text-lg font-bold">{c.ctaTitle}</p>
-  <p class="mt-2 text-sm leading-6 text-blue-100">
-    {context ? `${context}：${c.ctaSubtitle}` : c.ctaSubtitle}
-  </p>
-  <div class="mt-4 space-y-2.5 rounded-lg bg-white/10 p-3 text-sm">
-    <p class="flex items-center gap-2">
-      <span>💬</span><span>微信：<strong class="text-base tracking-wide">{c.wechat}</strong></span>
+<aside id="cta" class="relative overflow-hidden rounded-2xl bg-gradient-to-b from-blue-600 to-indigo-700 p-5 text-white shadow-lg shadow-blue-200">
+  <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/10"></div>
+  <div class="absolute -bottom-12 -left-8 h-28 w-28 rounded-full bg-white/5"></div>
+  <div class="relative">
+    <p class="text-lg font-bold">{c.ctaTitle}</p>
+    <p class="mt-2 text-sm leading-6 text-blue-100">
+      {context ? `${context}：${c.ctaSubtitle}` : c.ctaSubtitle}
     </p>
-    <p class="flex items-center gap-2">
-      <span>📞</span><span>电话：<strong>{c.phone}</strong></span>
-    </p>
-    <p class="flex items-center gap-2">
-      <span>🐧</span><span>QQ：<strong>{c.qq}</strong></span>
-    </p>
+    <img src={c.qrImage} alt="微信咨询二维码" class="mx-auto mt-4 w-40 rounded-xl bg-white p-2 shadow" loading="lazy" />
+    <p class="mt-3 text-center text-xs text-blue-200">微信扫码咨询，添加请备注"学分"</p>
   </div>
-  {c.qrImage && (
-    <img src={c.qrImage} alt="微信咨询二维码" class="mx-auto mt-4 w-40 rounded-lg bg-white p-2" loading="lazy" />
-  )}
-  <p class="mt-3 text-center text-xs text-blue-200">添加微信请备注"学分"</p>
 </aside>

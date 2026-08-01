@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+import Icon from '../components/Icon.astro';
 import { site } from '../config';
 
 const title = '浙江省12个指定网络继续教育平台名单（2026）_杭州新干线';
@@ -68,27 +69,30 @@ const faqLd = {
       </p>
     </div>
 
-    <div class="mt-4 overflow-x-auto">
+    <div class="mt-4 overflow-x-auto rounded-lg border border-gray-200">
       <table class="w-full border-collapse text-sm">
         <thead>
           <tr>
-            <th class="border border-gray-300 bg-gray-50 px-3 py-2 text-left font-semibold">#</th>
-            <th class="border border-gray-300 bg-gray-50 px-3 py-2 text-left font-semibold">平台名称</th>
-            <th class="border border-gray-300 bg-gray-50 px-3 py-2 text-left font-semibold">属地</th>
-            <th class="border border-gray-300 bg-gray-50 px-3 py-2 text-left font-semibold">网址</th>
+            <th class="border-b border-gray-200 bg-blue-50/70 px-3 py-2.5 text-left font-semibold">#</th>
+            <th class="border-b border-gray-200 bg-blue-50/70 px-3 py-2.5 text-left font-semibold">平台名称</th>
+            <th class="border-b border-gray-200 bg-blue-50/70 px-3 py-2.5 text-left font-semibold">属地</th>
+            <th class="border-b border-gray-200 bg-blue-50/70 px-3 py-2.5 text-left font-semibold">网址</th>
           </tr>
         </thead>
         <tbody>
           {platforms.map((p, i) => (
-            <tr class={i === 1 ? 'bg-blue-50' : ''}>
-              <td class="border border-gray-300 px-3 py-2">{i + 1}</td>
-              <td class="border border-gray-300 px-3 py-2 font-medium">
-                {p.name}{i === 1 && <span class="ml-1 rounded bg-blue-600 px-1.5 py-0.5 text-xs text-white">杭州主平台</span>}
+            <tr class={i === 1 ? 'bg-blue-50/70' : 'transition-colors hover:bg-blue-50/40'}>
+              <td class="border-b border-gray-100 px-3 py-2.5 text-gray-500">{i + 1}</td>
+              <td class="border-b border-gray-100 px-3 py-2.5 font-medium">
+                {p.name}{i === 1 && <span class="ml-1.5 rounded-md bg-blue-600 px-1.5 py-0.5 text-xs font-semibold text-white">杭州主平台</span>}
               </td>
-              <td class="border border-gray-300 px-3 py-2">{p.region}</td>
-              <td class="border border-gray-300 px-3 py-2">
-                <a href={p.url} target="_blank" rel="noopener nofollow" class="break-all text-blue-600 hover:underline">
-                  {p.url.replace(/^https?:\/\//, '')} ↗
+              <td class="border-b border-gray-100 px-3 py-2.5">
+                <span class="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">{p.region}</span>
+              </td>
+              <td class="border-b border-gray-100 px-3 py-2.5">
+                <a href={p.url} target="_blank" rel="noopener nofollow" class="inline-flex items-center gap-1 break-all text-blue-600 hover:underline">
+                  {p.url.replace(/^https?:\/\//, '')}
+                  <Icon name="external" class="h-3.5 w-3.5 shrink-0" />
                 </a>
               </td>
             </tr>
@@ -107,8 +111,9 @@ const faqLd = {
       </ul>
       <h2>名单文件原文</h2>
       <p>
-        <a href="http://photos.zjjsrc.net/2024tongzhi/0516.pdf" target="_blank" rel="noopener nofollow">
-          浙建人教函〔2024〕241号附件：全省建设行业专业技术人员网络继续教育平台汇总表（PDF）↗
+        <a href="http://photos.zjjsrc.net/2024tongzhi/0516.pdf" target="_blank" rel="noopener nofollow" class="inline-flex items-center gap-1">
+          浙建人教函〔2024〕241号附件：全省建设行业专业技术人员网络继续教育平台汇总表（PDF）
+          <Icon name="external" class="h-3.5 w-3.5 shrink-0" />
         </a>
       </p>
     </div>

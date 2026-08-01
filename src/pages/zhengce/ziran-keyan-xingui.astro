@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
+import Icon from '../../components/Icon.astro';
 import { site } from '../../config';
 
 const title = '浙江省自然科研系列继续教育2026新规解读（浙科发才〔2026〕14号）';
@@ -80,13 +81,15 @@ const articleLd = {
       <h2>政策原文与官方解读</h2>
       <ul>
         <li>
-          <a href="https://kjt.zj.gov.cn/col/col1229080140/art/2026/art_016636e22fcc42d5baf1057cf033ee6f.html" target="_blank" rel="noopener nofollow">
-            浙科发才〔2026〕14号细则全文（浙江省科技厅）↗
+          <a href="https://kjt.zj.gov.cn/col/col1229080140/art/2026/art_016636e22fcc42d5baf1057cf033ee6f.html" target="_blank" rel="noopener nofollow" class="inline-flex items-center gap-1">
+            浙科发才〔2026〕14号细则全文（浙江省科技厅）
+            <Icon name="external" class="h-3.5 w-3.5 shrink-0" />
           </a>
         </li>
         <li>
-          <a href="https://www.zj.gov.cn/col/col1229093916/art/2026/art_8ac37561fa4b70a1932db1637fa8b612.html" target="_blank" rel="noopener nofollow">
-            浙江省政府门户网站官方解读 ↗
+          <a href="https://www.zj.gov.cn/col/col1229093916/art/2026/art_8ac37561fa4b70a1932db1637fa8b612.html" target="_blank" rel="noopener nofollow" class="inline-flex items-center gap-1">
+            浙江省政府门户网站官方解读
+            <Icon name="external" class="h-3.5 w-3.5 shrink-0" />
           </a>
         </li>
       </ul>

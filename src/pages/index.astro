@@ -2,9 +2,37 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+import Icon from '../components/Icon.astro';
 import { site } from '../config';
 
 const industries = (await getCollection('hangye')).sort((a, b) => a.data.order - b.data.order);
+
+const tools = [
+  {
+    href: '/zhengce/xuefen-guanli-banfa/',
+    icon: 'doc',
+    name: '学分制管理办法解读',
+    desc: '杭州市继续教育学分制核心条款逐条讲解',
+  },
+  {
+    href: '/zhengce/ziran-keyan-xingui/',
+    icon: 'bolt',
+    name: '自然科研 2026 新规',
+    desc: 'A/B类专业科目、90天申报期，5月10日施行',
+  },
+  {
+    href: '/pingtai/',
+    icon: 'globe',
+    name: '12 个指定学习平台',
+    desc: '浙江省指定网络继续教育平台完整名单',
+  },
+  {
+    href: '/xuefenguize/',
+    icon: 'calc',
+    name: '学分折算规则速查',
+    desc: '面授、学历、论文、专利各折算多少学分',
+  },
+] as const;
 
 const websiteLd = {
   '@context': 'https://schema.org',
@@ -18,102 +46,155 @@ const websiteLd = {
 
 <Base title={site.tagline} description={site.description} jsonLd={websiteLd}>
   <!-- Hero -->
-  <section class="rounded-2xl bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 px-6 py-12 text-center text-white md:py-16">
-    <h1 class="text-2xl font-bold leading-snug md:text-4xl">
-      杭州专业技术人员继续教育学分要求，一站查清
-    </h1>
-    <p class="mx-auto mt-4 max-w-2xl text-sm leading-7 text-blue-100 md:text-base">
-      依据《杭州市专业技术人员继续教育学分制管理办法》，每年累计不少于
-      <strong class="text-white">90学分</strong>，其中专业科目不少于
-      <strong class="text-white">60学分</strong>，行业公需和一般公需科目合计不少于
-      <strong class="text-white">18学分</strong>。继续教育学分是职称申报的必备条件。
-    </p>
-    <div class="mt-6 flex flex-wrap justify-center gap-3">
-      <a href="#hangye" class="rounded-lg bg-white px-6 py-3 font-bold text-blue-700 shadow hover:bg-blue-50">
-        查看各行业要求
-      </a>
-      <a href="/xuefenguize/" class="rounded-lg border border-white/40 px-6 py-3 font-semibold text-white hover:bg-white/10">
-        学分折算规则速查
-      </a>
-    </div>
-  </section>
+  <section class="relative overflow-hidden rounded-2xl bg-slate-900 text-white shadow-xl">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-950 via-slate-900 to-indigo-950"></div>
+    <svg class="absolute inset-0 h-full w-full text-white opacity-[0.07]" aria-hidden="true">
+      <defs>
+        <pattern id="hero-grid" width="36" height="36" patternUnits="userSpaceOnUse">
+          <path d="M36 0H0v36" fill="none" stroke="currentColor" stroke-width="1" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#hero-grid)" />
+    </svg>
+    <div class="absolute -top-24 right-0 h-72 w-72 rounded-full bg-blue-500/25 blur-3xl"></div>
+    <div class="absolute -bottom-32 -left-10 h-80 w-80 rounded-full bg-indigo-500/20 blur-3xl"></div>
 
-  <!-- 核心数字 -->
-  <section class="mt-10 grid gap-4 sm:grid-cols-3">
-    <div class="rounded-xl border border-gray-200 bg-white p-6 text-center shadow-sm">
-      <p class="text-4xl font-extrabold text-blue-600">90</p>
-      <p class="mt-1 text-sm font-medium text-gray-700">每年累计学分下限</p>
-    </div>
-    <div class="rounded-xl border border-gray-200 bg-white p-6 text-center shadow-sm">
-      <p class="text-4xl font-extrabold text-blue-600">60</p>
-      <p class="mt-1 text-sm font-medium text-gray-700">其中专业科目学分下限</p>
-    </div>
-    <div class="rounded-xl border border-gray-200 bg-white p-6 text-center shadow-sm">
-      <p class="text-4xl font-extrabold text-blue-600">18</p>
-      <p class="mt-1 text-sm font-medium text-gray-700">行业公需+一般公需合计下限</p>
+    <div class="relative grid gap-10 px-6 py-12 md:px-12 md:py-16 lg:grid-cols-[1.25fr_1fr] lg:items-center">
+      <div>
+        <p class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1 text-xs font-medium text-blue-100 backdrop-blur">
+          <span class="relative flex h-1.5 w-1.5">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+          </span>
+          依据杭州市继续教育学分制管理办法 · 2026 年度适用
+        </p>
+        <h1 class="mt-5 text-3xl font-bold leading-tight tracking-tight md:text-[2.6rem] md:leading-[1.2]">
+          杭州专业技术人员<br />继续教育学分要求，一站查清
+        </h1>
+        <p class="mt-4 max-w-xl text-sm leading-7 text-blue-100/90 md:text-base md:leading-8">
+          每年累计不少于 90 学分，其中专业科目不少于 60 学分，行业公需和一般公需科目合计不少于 18 学分。
+          继续教育学分是职称申报的必备条件。
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a
+            href="#hangye"
+            class="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-bold text-blue-700 shadow-lg shadow-blue-950/40 transition hover:-translate-y-0.5 hover:bg-blue-50"
+          >
+            查看各行业要求
+            <Icon name="arrowRight" class="h-4 w-4" />
+          </a>
+          <a
+            href="/xuefenguize/"
+            class="inline-flex items-center gap-2 rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            学分折算规则速查
+          </a>
+        </div>
+      </div>
+
+      <!-- 年度学分底线面板 -->
+      <div class="rounded-2xl border border-white/15 bg-white/10 p-6 shadow-2xl backdrop-blur md:p-7">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-200">年度学分底线</p>
+        <dl class="mt-4 divide-y divide-white/10">
+          <div class="flex items-baseline justify-between py-3">
+            <dt class="text-sm text-blue-100">全年累计学分</dt>
+            <dd class="text-3xl font-extrabold tabular-nums">90<span class="ml-1 text-sm font-medium text-blue-200">学分</span></dd>
+          </div>
+          <div class="flex items-baseline justify-between py-3">
+            <dt class="text-sm text-blue-100">其中：专业科目</dt>
+            <dd class="text-3xl font-extrabold tabular-nums">60<span class="ml-1 text-sm font-medium text-blue-200">学分</span></dd>
+          </div>
+          <div class="flex items-baseline justify-between py-3">
+            <dt class="text-sm text-blue-100">行业公需 + 一般公需</dt>
+            <dd class="text-3xl font-extrabold tabular-nums">18<span class="ml-1 text-sm font-medium text-blue-200">学分</span></dd>
+          </div>
+        </dl>
+        <p class="mt-3 flex items-center gap-1.5 text-xs leading-5 text-blue-200/80">
+          <Icon name="info" class="h-3.5 w-3.5 shrink-0" />
+          学分未达标将取消当年职称申报资格
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- 行业导航 -->
-  <section id="hangye" class="mt-12">
-    <h2 class="text-xl font-bold text-gray-900 md:text-2xl">各行业系列继续教育学分要求</h2>
-    <p class="mt-2 text-sm text-gray-600">
-      各行业系列的累计学分口径、登记平台、申报时间各不相同，点击进入对应行业查看详情。
-    </p>
-    <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  <section id="hangye" class="mt-14 scroll-mt-24">
+    <div class="border-l-4 border-blue-600 pl-3">
+      <h2 class="text-xl font-bold text-gray-900 md:text-2xl">各行业系列继续教育学分要求</h2>
+      <p class="mt-1 text-sm text-gray-500">
+        各行业系列的累计学分口径、登记平台、申报时间各不相同，点击进入对应行业查看详情。
+      </p>
+    </div>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {industries.map((item) => (
         <a
           href={`/hangye/${item.id}/`}
-          class="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-blue-300 hover:shadow-md"
+          class="group flex flex-col rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-100"
         >
-          <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-base font-bold text-blue-700 transition group-hover:bg-blue-600 group-hover:text-white">
+              {item.data.name.charAt(0)}
+            </span>
             <h3 class="font-bold text-gray-900 group-hover:text-blue-700">{item.data.name}系列</h3>
-            <span class="text-gray-300 transition group-hover:translate-x-0.5 group-hover:text-blue-500">→</span>
+            <Icon name="arrowRight" class="ml-auto h-4 w-4 shrink-0 text-gray-300 transition group-hover:translate-x-0.5 group-hover:text-blue-500" />
           </div>
-          <p class="mt-2 line-clamp-2 text-sm leading-6 text-gray-600">{item.data.creditRule}</p>
-          <p class="mt-2 text-xs text-gray-400">{item.data.level}</p>
+          <p class="mt-3 line-clamp-2 flex-1 text-sm leading-6 text-gray-600">{item.data.creditRule}</p>
+          <p class="mt-3 border-t border-dashed border-gray-100 pt-2.5 text-xs text-gray-400">{item.data.level}</p>
         </a>
       ))}
     </div>
   </section>
 
-  <!-- 政策动态 -->
-  <section class="mt-12">
-    <h2 class="text-xl font-bold text-gray-900 md:text-2xl">政策解读与实用工具</h2>
-    <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <a href="/zhengce/xuefen-guanli-banfa/" class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:border-blue-300 hover:shadow-md">
-        <p class="font-bold text-gray-900">学分制管理办法解读</p>
-        <p class="mt-1.5 text-sm text-gray-600">杭州市继续教育学分制核心条款逐条讲解</p>
-      </a>
-      <a href="/zhengce/ziran-keyan-xingui/" class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:border-blue-300 hover:shadow-md">
-        <p class="font-bold text-gray-900">自然科研2026新规</p>
-        <p class="mt-1.5 text-sm text-gray-600">A/B类专业科目、90天申报期，5月10日施行</p>
-      </a>
-      <a href="/pingtai/" class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:border-blue-300 hover:shadow-md">
-        <p class="font-bold text-gray-900">12个指定学习平台</p>
-        <p class="mt-1.5 text-sm text-gray-600">浙江省指定网络继续教育平台完整名单</p>
-      </a>
-      <a href="/xuefenguize/" class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:border-blue-300 hover:shadow-md">
-        <p class="font-bold text-gray-900">学分折算规则速查</p>
-        <p class="mt-1.5 text-sm text-gray-600">面授、学历、论文、专利各折算多少学分</p>
-      </a>
+  <!-- 政策解读与工具 -->
+  <section class="mt-14">
+    <div class="border-l-4 border-blue-600 pl-3">
+      <h2 class="text-xl font-bold text-gray-900 md:text-2xl">政策解读与实用工具</h2>
+      <p class="mt-1 text-sm text-gray-500">核心政策逐条讲解、指定平台名单、学分折算速查。</p>
+    </div>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {tools.map((t) => (
+        <a
+          href={t.href}
+          class="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-100"
+        >
+          <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 transition group-hover:bg-blue-600 group-hover:text-white">
+            <Icon name={t.icon} class="h-5 w-5" />
+          </span>
+          <p class="mt-3 font-bold text-gray-900 group-hover:text-blue-700">{t.name}</p>
+          <p class="mt-1.5 text-sm leading-6 text-gray-600">{t.desc}</p>
+        </a>
+      ))}
     </div>
   </section>
 
   <!-- 重要提醒 -->
-  <section class="mt-12 rounded-xl border border-amber-300 bg-amber-50 p-6">
-    <h2 class="text-lg font-bold text-amber-900">⚠️ 申报前必看：三个容易搞错的点</h2>
-    <ul class="mt-3 space-y-2 text-sm leading-7 text-amber-900">
-      <li>
-        <strong>1.</strong> 公需科目只要求"行业公需+一般公需<strong>合计≥18学分</strong>"，政策原文没有"12+6"的拆分，看到拆分的说法都是过时或错误的。
+  <section class="mt-14 overflow-hidden rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 p-6 md:p-8">
+    <div class="flex items-center gap-3">
+      <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-400/25 text-amber-600">
+        <Icon name="warning" class="h-5 w-5" />
+      </span>
+      <h2 class="text-lg font-bold text-amber-900">申报前必看：三个容易搞错的点</h2>
+    </div>
+    <ol class="mt-5 space-y-4">
+      <li class="flex gap-3">
+        <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500 text-xs font-bold text-white">1</span>
+        <p class="text-sm leading-7 text-amber-900">
+          公需科目只要求"行业公需+一般公需<strong>合计≥18学分</strong>"，政策原文没有"12+6"的拆分，看到拆分的说法都是过时或错误的。
+        </p>
       </li>
-      <li>
-        <strong>2.</strong> "4年累计360学时"是<strong>建设工程系列专属</strong>口径；多数行业中级是"2024年以来合计240学分+当年≥90"，各系列不同，务必查本系列通知。
+      <li class="flex gap-3">
+        <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500 text-xs font-bold text-white">2</span>
+        <p class="text-sm leading-7 text-amber-900">
+          "4年累计360学时"是<strong>建设工程系列专属</strong>口径；多数行业中级是"2024年以来合计240学分+当年≥90"，各系列不同，务必查本系列通知。
+        </p>
       </li>
-      <li>
-        <strong>3.</strong> 集中补修目前<strong>只有建设工程系列明文允许</strong>；其他行业能否补修以本系列当年评审通知为准，最稳妥的做法是按年达标。
+      <li class="flex gap-3">
+        <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-500 text-xs font-bold text-white">3</span>
+        <p class="text-sm leading-7 text-amber-900">
+          集中补修目前<strong>只有建设工程系列明文允许</strong>；其他行业能否补修以本系列当年评审通知为准，最稳妥的做法是按年达标。
+        </p>
       </li>
-    </ul>
+    </ol>
   </section>
 
   <CtaBanner />

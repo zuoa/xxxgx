@@ -1,5 +1,6 @@
 ---
 import { site } from '../config';
+import Icon from '../components/Icon.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -14,14 +15,18 @@ const fullTitle = `${title}_${site.name}`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const jsonLdList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
+const path = Astro.url.pathname;
 const nav = [
-  { href: '/', label: '首页' },
-  { href: '/hangye/jianshe-gongcheng/', label: '行业要求' },
-  { href: '/zhengce/', label: '政策解读' },
-  { href: '/pingtai/', label: '12平台名单' },
-  { href: '/xuefenguize/', label: '学分折算' },
-  { href: '/faq/', label: '常见问题' },
+  { href: '/', label: '首页', active: path === '/' },
+  { href: '/hangye/jianshe-gongcheng/', label: '行业要求', active: path.startsWith('/hangye') },
+  { href: '/zhengce/', label: '政策解读', active: path.startsWith('/zhengce') },
+  { href: '/pingtai/', label: '12平台名单', active: path.startsWith('/pingtai') },
+  { href: '/xuefenguize/', label: '学分折算', active: path.startsWith('/xuefenguize') },
+  { href: '/faq/', label: '常见问题', active: path.startsWith('/faq') },
 ];
+
+const favicon =
+  "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232850d8'/><text x='32' y='43' font-size='32' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle'>学</text></svg>";
 ---
 
 <!doctype html>
@@ -38,23 +43,36 @@ const nav = [
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="zh_CN" />
     <meta name="robots" content="index,follow" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+    <link rel="icon" href={favicon} />
     {jsonLdList.map((data) => (
       <script type="application/ld+json" set:html={JSON.stringify(data)} />
     ))}
   </head>
   <body class="flex min-h-screen flex-col bg-gray-50 text-gray-900 antialiased">
-    <header class="sticky top-0 z-40 border-b border-gray-200 bg-white/95 backdrop-blur">
+    <!-- 顶部品牌渐变条 -->
+    <div class="h-1 bg-gradient-to-r from-blue-700 via-indigo-500 to-blue-500"></div>
+
+    <header class="sticky top-0 z-40 border-b border-gray-200/80 bg-white/90 backdrop-blur-md">
       <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-        <a href="/" class="flex shrink-0 items-center gap-2">
-          <span class="text-2xl">📚</span>
-          <span class="text-lg font-bold text-gray-900">{site.name}</span>
+        <a href="/" class="flex shrink-0 items-center gap-2.5">
+          <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 text-base font-bold text-white shadow-md shadow-blue-200">
+            学
+          </span>
+          <span class="leading-tight">
+            <span class="block text-base font-bold tracking-tight text-gray-900">{site.name}</span>
+            <span class="hidden text-[11px] text-gray-500 sm:block">90 / 60 / 18 学分要求一站查</span>
+          </span>
         </a>
         <nav class="hidden items-center gap-1 md:flex">
           {nav.map((item) => (
             <a
               href={item.href}
-              class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-blue-700"
+              class:list={[
+                'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                item.active
+                  ? 'bg-blue-50 text-blue-700'
+                  : 'text-gray-600 hover:bg-gray-100 hover:text-blue-700',
+              ]}
             >
               {item.label}
             </a>
@@ -62,7 +80,7 @@ const nav = [
         </nav>
         <a
           href="#cta"
-          class="shrink-0 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+          class="shrink-0 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-blue-200 transition hover:shadow-lg hover:brightness-110"
         >
           学分咨询
         </a>
@@ -71,7 +89,10 @@ const nav = [
         {nav.map((item) => (
           <a
             href={item.href}
-            class="shrink-0 rounded px-2.5 py-1 text-xs font-medium text-gray-600 hover:text-blue-700"
+            class:list={[
+              'shrink-0 rounded-md px-2.5 py-1 text-xs font-medium',
+              item.active ? 'bg-blue-50 text-blue-700' : 'text-gray-600 hover:text-blue-700',
+            ]}
           >
             {item.label}
           </a>
@@ -83,43 +104,48 @@ const nav = [
       <slot />
     </main>
 
-    <footer class="border-t border-gray-200 bg-white">
-      <div class="mx-auto max-w-6xl px-4 py-8">
-        <div class="grid gap-8 md:grid-cols-3">
+    <footer class="bg-slate-900 text-slate-400">
+      <div class="mx-auto max-w-6xl px-4 py-10">
+        <div class="grid gap-10 md:grid-cols-[1.2fr_1fr_1.2fr]">
           <div>
-            <p class="font-bold text-gray-900">{site.name}</p>
-            <p class="mt-2 text-sm leading-6 text-gray-600">{site.tagline}</p>
+            <div class="flex items-center gap-2.5">
+              <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-indigo-500 text-sm font-bold text-white">
+                学
+              </span>
+              <p class="font-bold text-white">{site.name}</p>
+            </div>
+            <p class="mt-3 max-w-sm text-sm leading-6">{site.tagline}</p>
           </div>
           <div>
-            <p class="text-sm font-semibold text-gray-900">咨询方式</p>
-            <ul class="mt-2 space-y-1 text-sm text-gray-600">
-              <li>微信：{site.contact.wechat}</li>
-              <li>电话：{site.contact.phone}</li>
-              <li>QQ：{site.contact.qq}</li>
-            </ul>
+            <p class="text-sm font-semibold text-white">微信咨询</p>
+            <img src={site.contact.qrImage} alt="微信咨询二维码" class="mt-3 w-28 rounded-lg bg-white p-1.5" loading="lazy" />
+            <p class="mt-2 text-xs text-slate-500">扫码添加，备注"学分"</p>
           </div>
           <div>
-            <p class="text-sm font-semibold text-gray-900">官方平台</p>
-            <ul class="mt-2 space-y-1 text-sm">
+            <p class="text-sm font-semibold text-white">官方平台</p>
+            <ul class="mt-3 space-y-2.5 text-sm">
               <li>
-                <a href="https://learning.hzrs.hangzhou.gov.cn/" target="_blank" rel="noopener" class="text-blue-600 hover:underline">
+                <a href="https://learning.hzrs.hangzhou.gov.cn/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-blue-400 transition hover:text-blue-300">
                   杭州市专业技术人员学习新干线
+                  <Icon name="external" class="h-3.5 w-3.5" />
                 </a>
               </li>
               <li>
-                <a href="https://zjjx.rlsbt.zj.gov.cn/" target="_blank" rel="noopener" class="text-blue-600 hover:underline">
+                <a href="https://zjjx.rlsbt.zj.gov.cn/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-blue-400 transition hover:text-blue-300">
                   浙江省继续教育学时登记管理系统
+                  <Icon name="external" class="h-3.5 w-3.5" />
                 </a>
               </li>
               <li>
-                <a href="https://zcps.rlsbt.zj.gov.cn/" target="_blank" rel="noopener" class="text-blue-600 hover:underline">
+                <a href="https://zcps.rlsbt.zj.gov.cn/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-blue-400 transition hover:text-blue-300">
                   浙江省职称申报评审平台
+                  <Icon name="external" class="h-3.5 w-3.5" />
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <div class="mt-8 border-t border-gray-100 pt-4 text-xs leading-5 text-gray-500">
+        <div class="mt-10 border-t border-slate-800 pt-5 text-xs leading-5 text-slate-500">
           <p>
             本站为继续教育学分政策信息整理与学习辅助服务网站，内容整理自杭州市人社局、浙江省人社厅等公开发布的政策文件，
             最新要求以各行业主管部门当年评审通知为准。内容更新：{site.updatedAt}
